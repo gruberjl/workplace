@@ -1,0 +1,17 @@
+{
+  "name": "data",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "csv-array": "0.0.22",
+    "csv-parse": "^2.0.0",
+    "selenium-webdriver": "^4.0.0-alpha.1"
+  }
+}
