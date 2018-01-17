@@ -1,8 +1,2 @@
-first,last,email,title,department,manager,photo,Twitter,sex,birthmonth,birthday,birthyear,facebook,fbverified,interest1,interest2,interest3,medium
-Michelle,Anderson,Michelle.Anderson@themisdigital.com,CFO,Accounting,John Harris,ma,,female,2,24,1980,,TRUE,Education,Basic Income,Economy,TRUE
-Deborah,Jackson,Deborah.Jackson@themisdigital.com,HR Coordinator,HR,John Harris,dj,,female,4,15,1975,,TRUE,art,psychology,equality,TRUE
-John,Henry,John.Henry@themisdigital.com,CEO,Leadership,,jh,,male,6,2,1988,,TRUE,cryptocurrency,technology,business,TRUE
-Christopher,Garcia,Christopher.Garcia@themisdigital.com,Cloud Engineer,IT,Barbara Taylor,cg,,male,9,16,1964,,TRUE,data science,humor,javascript,TRUE
-Daniel,Martinez,Daniel.Martinez@themisdigital.com,Cloud Engineer,IT,Barbara Taylor,dm,,male,10,5,1971,,TRUE,technology,artificial intelligence,travel,TRUE
-,,,,,,,,,,,,,,,,,
-,,qweQWE123!@#,,,,,,,,,,,,,,,
+first,last,email,title,department,manager,photo,Twitter,sex,birthmonth,birthday,birthyear,GooglePlus,interest1,interest2,interest3,medium,digg,stumbleupon,reddit,twitter
+John,Gaven,John.Gaven8891@gmail.com,CEO,Leadership,,jh,,male,11,1,1988,https://plus.google.com/u/0/114496303162532873286,cryptocurrency,technology,business,john.gaven8891,johngaven,jgaven,johngaven,JohnGaven8891

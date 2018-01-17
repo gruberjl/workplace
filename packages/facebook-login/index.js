@@ -14,9 +14,7 @@ const login = async (email, password, driver) => {
 
   await driver.findElement(By.css(`input[value="Log In"]`)).click()
 
-  //await driver.sleep(3000)
-
-  //await driver.quit()
+  return driver
 }
 
-login('Deborah.Jackson@themisdigital.com', 'qweQWE123!@#')
+module.exports = {login}
