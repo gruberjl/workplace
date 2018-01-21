@@ -1,7 +1,8 @@
 const {random} = require('./index')
 
 const start = async () => {
-  random()
+  await random()
+  console.log('done')
 }
 
 start()
