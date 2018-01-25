@@ -1,20 +1,15 @@
-var webdriver = require('selenium-webdriver')
-const chrome = require('selenium-webdriver/chrome')
-const {By, until, Key} = webdriver
+const chrome = require('./chrome')
+const firefox = require('./firefox')
 
-const build = async (browser = 'chrome', disableNotifications = true) => {
-  const options = new chrome.Options()
+const build = async (browser = 'firefox') => {
+  let driver
+  if (browser == 'firefox') {
+    driver = await firefox.build()
+  } else {
+    driver = await chrome.build()
+  }
 
-  if (disableNotifications) options.addArguments("--disable-notifications")
-  
-  const driver = new webdriver.Builder().forBrowser(browser).withCapabilities(options).build()
   return driver
 }
 
-const destroy = async (driver) => {
-  await driver.quit()
-  driver = null
-  return true
-}
-
-module.exports = {build}
+module.exports = {chrome, firefox, build}
