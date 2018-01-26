@@ -13,6 +13,7 @@
     "data": "file:../data",
     "driver": "file:../driver",
     "google": "file:../google",
-    "medium": "file:../medium"
+    "medium": "file:../medium",
+    "twitter": "^1.7.1"
   }
 }

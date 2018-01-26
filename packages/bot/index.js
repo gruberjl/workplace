@@ -1,15 +1,13 @@
-const Driver = require('driver')
-const google = require('google')
-const Medium = require('medium')
-const data = require('data')
+const Driver = require('../driver')
+const twitter = require('../twitter')
+const password = require('./password')
 
 const start = async () => {
-  const email = "John.Gaven8891@gmail.com"
-  const p = data.password
+  const email = "gruberjl@gmail.com"
   const driver = await Driver.build()
-  await google.login(email, p, driver)
-  await Medium.login(driver)
-  await Medium.read.latestArticle(driver)
+
+  await twitter.twiendsLogin(email, password.gruber.twitter, driver)
+  await twitter.twiendsFollow(driver)
 
   //await driver.sleep(3000)
   //await driver.quit()
