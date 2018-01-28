@@ -1,4 +1,4 @@
-const url = 'https://www.pinterest.com/microsoft/followers/'
+const url = 'https://www.tumblr.com/search/%23microsoft'
 const webdriver = require('selenium-webdriver')
 const {By, until, Key} = webdriver
 
@@ -16,8 +16,8 @@ const follow = async (driver, followersToAdd = 100) => {
     await body.sendKeys(Key.PAGE_DOWN)
     await driver.sleep(1000)
 
-    followBtns = await driver.findElements(By.className('_5c'))
-    for (let followBtn of followBtns) {
+    followBtns = await driver.findElements(By.className('follow-text'))
+    followBtns.forEach(async (followBtn) => {
       addedFollowers++
       await driver.executeScript("arguments[0].scrollIntoView(true);", followBtn)
       await followBtn.click()

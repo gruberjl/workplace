@@ -1,5 +1,6 @@
 {
-	"devDependencies": {
-		"lerna": "^2.7.0"
-	}
+  "devDependencies": {
+    "eslint": "^4.16.0",
+    "lerna": "^2.7.0"
+  }
 }

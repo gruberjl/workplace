@@ -19,11 +19,12 @@ const postToGroup = async (driver, groupUrl, title, message) => {
 
   const bodyBox = await driver.findElement(By.name('body'))
   await bodyBox.sendKeys(message)
-  await driver.sleep(3000)
+  await driver.sleep(2000)
 
   const submitBtn = await driver.findElement(By.className('action-submit'))
   await driver.executeScript('arguments[0].scrollIntoView(false);', submitBtn)
   await submitBtn.click()
+  await driver.sleep(5000)
 }
 
 module.exports = {postToGroup}
