@@ -1,5 +1,6 @@
 const Driver = require('../driver')
 const linkedin = require('../linkedin')
+const facebook = require('../facebook')
 const creds = require('./password')
 
 const title = 'Microsoft To-Do has been released!'
@@ -25,9 +26,22 @@ const postToLinkedInGroups = async (driver) => {
   await linkedin.postToGroup(driver, 'https://www.linkedin.com/groups/1926688', title, message)
 }
 
+const postToFacebookGroups = async (driver) => {
+  await facebook.login(creds.facebook.username, creds.facebook.password, driver)
+  await facebook.postToGroup(driver, 'https://www.facebook.com/groups/1629390573966502/', message)
+  await facebook.postToGroup(driver, 'https://www.facebook.com/groups/1530631073890641', message)
+  await facebook.postToGroup(driver, 'https://www.facebook.com/groups/562325057194703', message)
+  await facebook.postToGroup(driver, 'https://www.facebook.com/groups/OneMicrosoft', message)
+  await facebook.postToGroup(driver, 'https://www.facebook.com/groups/117547242139482', message)
+  await facebook.postToGroup(driver, 'https://www.facebook.com/groups/262321783978587', message)
+  await facebook.postToGroup(driver, 'https://www.facebook.com/groups/O365Team', message)
+  await facebook.postToGroup(driver, 'https://www.facebook.com/groups/SmallBiz.DS.MLM', message)
+}
+
 const start = async () => {
   const driver = await Driver.build()
   await postToLinkedInGroups(driver)
+  await postToFacebookGroups(driver)
 }
 
 start()
