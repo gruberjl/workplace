@@ -1,6 +1,6 @@
 const Driver = require('driver')
 var webdriver = require('selenium-webdriver')
-const {By, until, Key} = webdriver
+const {By, Key} = webdriver
 const url = 'https://www.pinterest.com/login/?referrer=home_page'
 
 const login = async (email, password, driver) => {
@@ -13,7 +13,7 @@ const login = async (email, password, driver) => {
   await elEmail.sendKeys(email)
   await elPassword.sendKeys(password)
   await elPassword.sendKeys(Key.RETURN)
-  await driver.sleep(2000)
+  await driver.sleep(3000)
 
   return driver
 }
