@@ -12,6 +12,7 @@
   "dependencies": {
     "driver": "file:///C:\\Users\\john\\workplace\\packages\\driver",
     "facebook": "file:///C:\\Users\\john\\workplace\\packages\\facebook",
+    "google": "file:///C:\\Users\\john\\workplace\\packages\\google",
     "linkedin": "file:///C:\\Users\\john\\workplace\\packages\\linkedin"
   }
 }

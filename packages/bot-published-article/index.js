@@ -1,6 +1,9 @@
+/* eslint no-unused-vars: 0 */
+
 const Driver = require('../driver')
 const linkedin = require('../linkedin')
 const facebook = require('../facebook')
+const google = require('../google')
 const creds = require('./password')
 
 const title = 'Microsoft To-Do has been released!'
@@ -38,10 +41,20 @@ const postToFacebookGroups = async (driver) => {
   await facebook.postToGroup(driver, 'https://www.facebook.com/groups/SmallBiz.DS.MLM', message)
 }
 
+const postToGooglePlusGroups = async (driver) => {
+  await google.login(creds.google.username, creds.google.password, driver)
+  await google.postToGroup(driver, 'https://plus.google.com/communities/117138373167597089101', message)
+  await google.postToGroup(driver, 'https://plus.google.com/communities/114582343442158817928', message)
+  await google.postToGroup(driver, 'https://plus.google.com/communities/110729656096374290306', message)
+  await google.postToGroup(driver, 'https://plus.google.com/communities/111141645023972857501', message)
+  await google.postToGroup(driver, 'https://plus.google.com/communities/100962752238451550338', message)
+}
+
 const start = async () => {
   const driver = await Driver.build()
   await postToLinkedInGroups(driver)
   await postToFacebookGroups(driver)
+  await postToGooglePlusGroups(driver)
 }
 
 start()

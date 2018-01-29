@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "driver": "file:../driver",
+    "driver": "file:///C:\\Users\\john\\workplace\\packages\\driver",
     "selenium-webdriver": "^4.0.0-alpha.1"
   }
 }
