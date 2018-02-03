@@ -6,10 +6,8 @@ const facebook = require('../facebook')
 const google = require('../google')
 const creds = require('./password')
 
-const title = 'Microsoft To-Do has been released!'
-const message = `Microsoft has released the latest app To-Do from preview mode. It will start being seen by users shortly. Since it has been in preview for a few months it already has over 10,000 reviews combined across Android, iPhone, and Windows Store. The app is nice but is lacking a lot of features you would expect from Microsoft including sharing. Microsoft has promised to update the app with everything contained within Wunderlist. Microsoft is pitching To-Do as a replacement to Wunderlist. So I've taken a look at the app and it's good enough for me to switch from my Google Keep, which I've been using for years. I'll be pushing it out to my customers via a newsletter soon. I've made the documents public so feel free to copy them without worrying about consent or anything.
-
-https://medium.com/@gruberjl/5-steps-to-being-more-productive-using-microsoft-to-do-9a147a1fa3f9`
+const title = '10 Reasons SharePoint Online Destroys File Shares'
+const message = 'The world has changed. IT is no longer expected to support the business, we’re innovating to drive growth. It’s our job to transform the outdated practices of the old farts into a mobile, agile workforce. Migrating to SharePoint Online is the best way to transform an organization. https://medium.com/@gruberjl/10-reasons-sharepoint-online-destroys-file-shares-7c2c2680f1e9 #Microsoft #Office365 #SharePoint'
 
 const postToLinkedInGroups = async (driver) => {
   await linkedin.login(creds.linkedin.username, creds.linkedin.password, driver)
@@ -33,8 +31,6 @@ const postToFacebookGroups = async (driver) => {
   await facebook.login(creds.facebook.username, creds.facebook.password, driver)
   await facebook.postToGroup(driver, 'https://www.facebook.com/groups/1629390573966502/', message)
   await facebook.postToGroup(driver, 'https://www.facebook.com/groups/1530631073890641', message)
-  await facebook.postToGroup(driver, 'https://www.facebook.com/groups/562325057194703', message)
-  await facebook.postToGroup(driver, 'https://www.facebook.com/groups/OneMicrosoft', message)
   await facebook.postToGroup(driver, 'https://www.facebook.com/groups/117547242139482', message)
   await facebook.postToGroup(driver, 'https://www.facebook.com/groups/262321783978587', message)
   await facebook.postToGroup(driver, 'https://www.facebook.com/groups/O365Team', message)
@@ -45,7 +41,7 @@ const postToGooglePlusGroups = async (driver) => {
   await google.login(creds.google.username, creds.google.password, driver)
   await google.postToGroup(driver, 'https://plus.google.com/communities/117138373167597089101', message)
   await google.postToGroup(driver, 'https://plus.google.com/communities/114582343442158817928', message)
-  await google.postToGroup(driver, 'https://plus.google.com/communities/110729656096374290306', message)
+  // await google.postToGroup(driver, 'https://plus.google.com/communities/110729656096374290306', message)
   await google.postToGroup(driver, 'https://plus.google.com/communities/111141645023972857501', message)
   await google.postToGroup(driver, 'https://plus.google.com/communities/100962752238451550338', message)
 }
