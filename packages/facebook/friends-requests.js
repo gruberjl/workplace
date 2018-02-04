@@ -4,7 +4,7 @@ const {By, until, Key} = webdriver
 
 const scrollToBottom = async (driver) => {
   const times = 10
-  const body = driver.findElement(By.tagName("Body"))
+  const body = driver.findElement(By.tagName('Body'))
 
   for (let i=0; i < times; i++) {
     await body.sendKeys(Key.PAGE_DOWN)
@@ -13,22 +13,22 @@ const scrollToBottom = async (driver) => {
 }
 
 const sendFriendRequests = async (driver, requiredMutualFriends = 10) => {
-  if (!driver) throw "Facebook/friends-requsts: Driver is required"
+  if (!driver) throw 'Facebook/friends-requsts: Driver is required'
 
   await driver.get(url)
   await scrollToBottom(driver)
 
-  const potentialFriends = await driver.findElements(By.className('friendBrowserListUnit'))
+  const potentialFriends = (await driver.findElements(By.className('friendBrowserListUnit'))).reverse()
 
   let text, numOfMutualFriends, btn
-  for (let potentialFriend of potentialFriends) {
-    let textEl = await potentialFriend.findElement(By.className("_1nd3"))
+  for (const potentialFriend of potentialFriends) {
+    const textEl = await potentialFriend.findElement(By.className('_1nd3'))
     if (textEl) {
       text = await textEl.getText()
       numOfMutualFriends = text.replace( /\D/g, '')
       if (numOfMutualFriends >= requiredMutualFriends) {
         btn = await potentialFriend.findElement(By.className('FriendRequestAdd'))
-        driver.executeScript("arguments[0].scrollIntoView(true);", btn)
+        driver.executeScript('arguments[0].scrollIntoView(false);', btn)
         await btn.click()
         await driver.sleep(250)
       }

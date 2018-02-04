@@ -13,7 +13,7 @@ const scrollDown = async (driver) => {
 }
 
 const connect = async (driver) => {
-  if (!driver) throw 'twitter/tweinds-follow: Driver is required'
+  if (!driver) throw 'linkedin/connect: Driver is required'
 
   await driver.get(url)
   await driver.sleep(5000)
@@ -24,7 +24,7 @@ const connect = async (driver) => {
   connectBtns.forEach(async (connectBtn) => {
     await driver.executeScript('arguments[0].scrollIntoView(true);', connectBtn)
     await connectBtn.click()
-    await driver.sleep(500)
+    await driver.sleep(1000)
   })
 
   await driver.sleep(10000)
