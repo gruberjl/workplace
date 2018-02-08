@@ -26,4 +26,15 @@ const getUsernames = async () => {
   }
 }
 
-getUsernames()
+const open = async () => {
+  const url = 'https://flipboard.com/@gruberjl/office-365-8mcisgbdz'
+  let driver, i, username
+
+  for (i = 0; i < email.length; i++) {
+    driver = await login(email[i], 'qweQWE123!@#')
+    await driver.get(url)
+    
+  }
+}
+
+open()

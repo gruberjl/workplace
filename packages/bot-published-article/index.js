@@ -6,8 +6,8 @@ const facebook = require('../facebook')
 const google = require('../google')
 const creds = require('./password')
 
-const title = '10 Reasons SharePoint Online Destroys File Shares'
-const message = 'The world has changed. IT is no longer expected to support the business, we’re innovating to drive growth. It’s our job to transform the outdated practices of the old farts into a mobile, agile workforce. Migrating to SharePoint Online is the best way to transform an organization. https://medium.com/@gruberjl/10-reasons-sharepoint-online-destroys-file-shares-7c2c2680f1e9 #Microsoft #Office365 #SharePoint'
+const title = 'Interview with Simon Chan on the Future of Microsoft To-Do'
+const message = "Interview with Microsoft's Senior Product Manager, Simon Chan, on the Future of Microsoft To-Do. Simon Chan is best known for being a key team member in growing Wunderlist's user base to over 20 million. Simon gives key insight on the future of the app and why To-Do will be one of Microsoft Office 365's most successful apps. https://hackernoon.com/interview-with-simon-chan-on-the-future-of-microsoft-to-do-aee3a460610 #Microsoft #productivity #ToDo #Technology #Office365"
 
 const postToLinkedInGroups = async (driver) => {
   await linkedin.login(creds.linkedin.username, creds.linkedin.password, driver)
