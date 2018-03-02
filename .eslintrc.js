@@ -24,6 +24,7 @@ module.exports = {
             "error",
             "never"
         ],
-        "prefer-const": 1
+        "prefer-const": 1,
+        "no-console": 0
     }
 };
