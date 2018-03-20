@@ -4,9 +4,9 @@ const users = require('./password')
 const friends = []
 const HASH_TAG = 'excel'
 
-process.on('unhandledRejection', r => console.log(r));
+process.on('unhandledRejection', r => console.log(r))
 
-const getTweets = async (T, hashtag = HASH_TAG, count = 10) => new Promise((res, rej) => {
+const getTweets = async (T, hashtag = HASH_TAG, count = 100) => new Promise((res, rej) => {
   T.get('search/tweets', { q: `#${hashtag} since:2018-01-01 lang:en`, count }, function(err, data) {
     if (err)
       rej(err)
@@ -63,9 +63,10 @@ const favoriteTweet = async (T, ID) => new Promise((res, rej) => {
 })
 
 const engagementCycle = async (user, hashtag = HASH_TAG) => {
-  console.log('starting engagement cycle')
+  console.log(`starting engagement cycle for @${user.name} #${hashtag}`)
   var T = new Twit(user)
-  const tweets = await getTweets(T, hashtag, 100)
+  const tweets = await getTweets(T, hashtag)
+  console.log(`     Found ${tweets.length} tweets`)
   for (const tweet of tweets) {
     if (validateTweet(tweet, false)) {
       await favoriteTweet(T, tweet.id_str)
@@ -76,7 +77,8 @@ const engagementCycle = async (user, hashtag = HASH_TAG) => {
 }
 
 const start = async () => {
-  const tags = ['office365', 'MicrosoftTeams', 'sharepoint', 'exchangeonline', 'office2016']
+  const tags = ['MicrosoftTeams', 'sharepoint', 'office2016', 'office365', 'exchangeonline']
+
   for (let i = 0; i < users.length; i++) {
     await engagementCycle(users[i], tags[Math.floor(Math.random()*tags.length)])
   }
