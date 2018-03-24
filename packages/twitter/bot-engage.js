@@ -1,13 +1,12 @@
 var Twit = require('twit')
-const users = require('./password')
+const {csv, twitterAccount, twitterApp} = require('../data')
 
 const friends = []
-const HASH_TAG = 'excel'
 
 process.on('unhandledRejection', r => console.log(r))
 
-const getTweets = async (T, hashtag = HASH_TAG, count = 100) => new Promise((res, rej) => {
-  T.get('search/tweets', { q: `#${hashtag} since:2018-01-01 lang:en`, count }, function(err, data) {
+const getTweets = async (T, hashtag, count = 100) => new Promise((res, rej) => {
+  T.get('search/tweets', { q: `#${hashtag} lang:en`, count }, function(err, data) {
     if (err)
       rej(err)
     else {
@@ -62,8 +61,8 @@ const favoriteTweet = async (T, ID) => new Promise((res, rej) => {
   })
 })
 
-const engagementCycle = async (user, hashtag = HASH_TAG) => {
-  console.log(`starting engagement cycle for @${user.name} #${hashtag}`)
+const engagementCycle = async (user, hashtag) => {
+  console.log(`starting engagement cycle for @${user.twitter} #${hashtag}`)
   var T = new Twit(user)
   const tweets = await getTweets(T, hashtag)
   console.log(`     Found ${tweets.length} tweets`)
@@ -77,10 +76,21 @@ const engagementCycle = async (user, hashtag = HASH_TAG) => {
 }
 
 const start = async () => {
-  const tags = ['MicrosoftTeams', 'sharepoint', 'office2016', 'office365', 'exchangeonline']
+  const tags = ['MicrosoftTeams', 'sharepoint', 'office2016', 'office365', 'exchangeonline', 'microsoftflow', 'onedrive']
+  const people = await csv()
+  // await engagementCycle(Object.assign({}, twitterApp, twitterAccount), tags[Math.floor(Math.random()*tags.length)])
 
-  for (let i = 0; i < users.length; i++) {
-    await engagementCycle(users[i], tags[Math.floor(Math.random()*tags.length)])
+  for (let i = 0; i < people.length; i++) {
+    if (people[i].twitter_token) {
+      const tag = tags[Math.floor(Math.random()*tags.length)]
+      const person = Object.assign({
+        twitter: people[i].twitter,
+        access_token: people[i].twitter_token,
+        access_token_secret: people[i].twitter_secret
+      }, twitterApp)
+
+      await engagementCycle(person, tag)
+    }
   }
 }
 

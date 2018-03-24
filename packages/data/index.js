@@ -16,6 +16,7 @@ const db = (name) => {
   return new PouchDB(path.join(__dirname, name))
 }
 
+const twitterApp = require('./password').twitterApp
 const commonPassword = require('./password').commonPassword
 const twitterAccount = require('./password').twitter
 
@@ -25,4 +26,4 @@ const csv = async () => new Promise((res) => {
   })
 })
 
-module.exports = {people/*, password*/, db, commonPassword, csv, twitterAccount}
+module.exports = {people/*, password*/, db, commonPassword, csv, twitterAccount, twitterApp}
