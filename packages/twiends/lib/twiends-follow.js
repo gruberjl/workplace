@@ -10,13 +10,13 @@ const follow = async (driver) => {
 
   await driver.findElement(By.className('mask'))
   await driver.executeScript('document.elementFromPoint(10, 10).click()')
-  await driver.sleep(250)
+  await driver.sleep(1000)
 
   const followButtons = await driver.findElements(By.className('mainbut'))
 
   followButtons.forEach(async (followButton) => {
     await followButton.click()
-    await driver.sleep(250)
+    await driver.sleep(800)
   })
 
   await driver.sleep(10000)

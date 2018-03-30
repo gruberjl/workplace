@@ -1,2 +1,3 @@
+const {engage} = require('./lib/engage')
 
-module.exports = {}
+module.exports = {engage}
