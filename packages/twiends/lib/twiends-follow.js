@@ -6,7 +6,7 @@ const follow = async (driver) => {
   if (!driver) throw 'twitter/tweinds-follow: Driver is required'
 
   await driver.get(url)
-  await driver.sleep(1000)
+  await driver.sleep(2000)
 
   await driver.findElement(By.className('mask'))
   await driver.executeScript('document.elementFromPoint(10, 10).click()')
@@ -14,10 +14,10 @@ const follow = async (driver) => {
 
   const followButtons = await driver.findElements(By.className('mainbut'))
 
-  followButtons.forEach(async (followButton) => {
-    await followButton.click()
-    await driver.sleep(800)
-  })
+  for (let i = 0; i < followButtons.length; i++) {
+    await followButtons[i].click()
+    await driver.sleep(500)
+  }
 
   await driver.sleep(10000)
 
