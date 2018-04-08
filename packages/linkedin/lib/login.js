@@ -1,4 +1,4 @@
-const Driver = require('driver')
+const Driver = require('../../driver')
 var webdriver = require('selenium-webdriver')
 const {By} = webdriver
 const url = 'https://www.linkedin.com/'
