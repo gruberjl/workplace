@@ -8,6 +8,7 @@ module.exports = {
       "ecmaVersion": 8
     },
     "rules": {
+        "no-empty": 0,
         "indent": [
             "error",
             2
