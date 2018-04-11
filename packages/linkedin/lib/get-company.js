@@ -15,13 +15,24 @@ const getCompanyEmployeeLocation = (el) => el.findElement(By.className('subline-
 const getCompanyEmployeeLink = (el) => el.findElement(By.className('search-result__result-link'))
   .then((linkEl) => linkEl.getAttribute('href'))
 
+const getCanConnect = async (el) => {
+  try {
+    const btn = await el.findElement(By.className('search-result__actions--primary'))
+    const text = await btn.getText()
+    return text == 'Connect'
+  } catch (e) { }
+
+  return false
+}
+
 const getCompanyEmployee = async (el) => {
   const name = await getCompanyEmployeeName(el)
   const title = await getCompanyEmployeeTitle(el)
   const location = await getCompanyEmployeeLocation(el)
   const link = await getCompanyEmployeeLink(el)
+  const canConnect = await getCanConnect(el)
 
-  return {name, title, location, link}
+  return {name, title, location, link, canConnect}
 }
 
 const getCompanyEmployeesPage = async (driver, companyId, page=1) => {

@@ -4,6 +4,7 @@ const csvArray = require('csv-array')
 // const password = require('./password')
 const PEOPLE_CSV = __dirname + '/people.csv'
 const WIKI_COMPANIES_CSV = __dirname + '/wiki-companies.csv'
+const DECISION_MAKER_TITLES = __dirname + '/decision-maker-titles.csv'
 
 const people = {
   all: new Promise((res) => {
@@ -16,6 +17,14 @@ const people = {
 const wikiCompanies = {
   all: new Promise((res) => {
     csvArray.parseCSV(WIKI_COMPANIES_CSV, (data) => {
+      res(data)
+    })
+  })
+}
+
+const decisionMakerTitles = {
+  all: new Promise((res) => {
+    csvArray.parseCSV(DECISION_MAKER_TITLES, (data) => {
       res(data)
     })
   })
@@ -37,4 +46,4 @@ const csv = async () => new Promise((res) => {
   })
 })
 
-module.exports = {people, DB, db:DB, commonPassword, csv, twitterAccount, twitterApp, wikiCompanies, HUBSPOT, LINKEDIN}
+module.exports = {people, DB, db:DB, commonPassword, csv, twitterAccount, twitterApp, wikiCompanies, HUBSPOT, LINKEDIN, decisionMakerTitles}
