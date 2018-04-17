@@ -45,10 +45,10 @@ const unfollow = async (T, users) => {
   let rateLimitHit = false
   for (let i = 0; i < users.length; i++) {
     if (rateLimitHit == false) {
-      console.log(`unfollowing: ${users[i].name}`)
+      // console.log(`unfollowing: ${users[i].name}`)
       const response = await T.post('friendships/destroy', {user_id:users[i].id_str})
-      console.log(response)
-      console.log('')
+      // console.log(response)
+      // console.log('')
     }
   }
 }
