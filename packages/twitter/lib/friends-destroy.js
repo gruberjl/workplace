@@ -47,9 +47,7 @@ const filterUnfriend = async (T, users) => {
 
 const unfollow = async (T, users) => {
   for (let i = 0; i < users.length; i++) {
-    if (rateLimitHit == false) {
-      await T.post('friendships/destroy', {user_id:users[i].id_str})
-    }
+    await T.post('friendships/destroy', {user_id:users[i].id_str})
   }
 }
 
