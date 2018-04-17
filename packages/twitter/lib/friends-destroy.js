@@ -16,7 +16,8 @@ const filterUnfriend = async (T, users) => {
     if (
       name.indexOf('gruber') != -1 ||
       name.indexOf('ridley') != -1 ||
-      name.indexOf('fuydal') != -1
+      name.indexOf('fuydal') != -1 ||
+      name.indexOf('lloyd') != -1
     ) return false
     if (user.lang !== 'en') return true
     if (user.status && user.status.possibly_sensitive) return true
@@ -32,7 +33,10 @@ const filterUnfriend = async (T, users) => {
       description.indexOf('phoenixville') != -1 ||
       description.indexOf('salesforce') != -1 ||
       description.indexOf('dynamics') != -1 ||
-      description.indexOf('solar') != -1
+      description.indexOf('solar') != -1 ||
+      description.indexOf('strateg') != -1 ||
+      description.indexOf('communication') != -1 ||
+      description.indexOf('collaborate') != -1
     ) return false
 
     return true
