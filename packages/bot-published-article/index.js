@@ -2,12 +2,12 @@
 
 const Driver = require('../driver')
 const linkedin = require('../linkedin')
-const facebook = require('../facebook')
-const google = require('../google')
+// const facebook = require('../facebook')
+// const google = require('../google')
 const creds = require('./password')
 
-const title = 'Interview with Simon Chan on the Future of Microsoft To-Do'
-const message = "Interview with Microsoft's Senior Product Manager, Simon Chan, on the Future of Microsoft To-Do. Simon Chan is best known for being a key team member in growing Wunderlist's user base to over 20 million. Simon gives key insight on the future of the app and why To-Do will be one of Microsoft Office 365's most successful apps. https://hackernoon.com/interview-with-simon-chan-on-the-future-of-microsoft-to-do-aee3a460610 #Microsoft #productivity #ToDo #Technology #Office365"
+const title = 'What Is Office 365?'
+const message = "Office 365 is Microsoft’s cloud for businesses. Designed around productivity and collaboration, Microsoft has integrated over 30 apps into the cloud platform. From email, file storage, and secure chat for teams, businesses around the world are empowering their users by improving productivity while cutting costs. Microsoft’s continued shift to cloud computing has had a significant impact on businesses. http://documentmedia.com/article-2792-What-Is-Office-365.html #Microsoft #productivity #Technology #Office365"
 
 const postToLinkedInGroups = async (driver) => {
   await linkedin.login(creds.linkedin.username, creds.linkedin.password, driver)
@@ -49,8 +49,8 @@ const postToGooglePlusGroups = async (driver) => {
 const start = async () => {
   const driver = await Driver.build()
   await postToLinkedInGroups(driver)
-  await postToFacebookGroups(driver)
-  await postToGooglePlusGroups(driver)
+  // await postToFacebookGroups(driver)
+  // await postToGooglePlusGroups(driver)
 }
 
 start()
