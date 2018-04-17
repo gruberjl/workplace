@@ -47,7 +47,7 @@ const filterUnfriend = async (T, users) => {
 
 const unfollow = async (T, users) => {
   for (let i = 0; i < users.length; i++) {
-    await T.post('friendships/destroy', {user_id:users[i].id_str})
+    await T.post('friendships/destroy', {screen_name:users[i].screen_name})
   }
 }
 
@@ -58,7 +58,6 @@ const friendsClean = async (user) => {
   const users = await getFollowers(T)
   const usersToUnfollow = await filterUnfriend(T, users)
   await unfollow(T, usersToUnfollow)
-
 }
 
 module.exports = {friendsClean}
