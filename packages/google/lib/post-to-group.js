@@ -1,4 +1,4 @@
-const {By, Key} = require('selenium-webdriver')
+const {By, Key} = require('../../driver').webdriver
 
 const postToGroup = async (driver, groupUrl, message) => {
   if (!driver) throw 'google/post-to-group: Driver is required'
