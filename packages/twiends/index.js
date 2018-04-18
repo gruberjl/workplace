@@ -1,5 +1,5 @@
-const {login} = require('./lib/twiends-login')
-const {follow} = require('./lib/twiends-follow')
+const {login} = require('./lib/login')
+const {follow} = require('./lib/follow')
 
 const start = async (username, password) => {
   if (!username || !password) throw ('username & password required')
@@ -9,4 +9,4 @@ const start = async (username, password) => {
   await driver.quit()
 }
 
-module.exports = {start}
+module.exports = {login, follow, start}

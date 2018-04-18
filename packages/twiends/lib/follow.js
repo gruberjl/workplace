@@ -1,6 +1,5 @@
 const url = 'https://twiends.com/home'
-const webdriver = require('selenium-webdriver')
-const {By} = webdriver
+const {By} = require('../../driver').webdriver
 
 const follow = async (driver) => {
   if (!driver) throw 'twitter/tweinds-follow: Driver is required'
