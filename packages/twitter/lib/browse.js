@@ -1,7 +1,7 @@
 /* eslint no-empty: 0 */
-var webdriver = require('selenium-webdriver')
-const {By, Key} = webdriver
 const Driver = require('../../driver')
+const {By, Key} = Driver.webdriver
+
 const url = 'https://twitter.com/login'
 const tags = ['MicrosoftTeams', 'sharepoint', 'office2016', 'office365', 'exchangeonline', 'microsoftflow', 'onedrive', 'OfficeProPlus', 'SharePointOnline']
 
