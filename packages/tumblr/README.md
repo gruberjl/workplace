@@ -4,7 +4,7 @@ Automatic tasks for Tumblr.
 
 ## login
 
-logs into Tumblr. You must be logged in to Google already.
+logs into Tumblr.
 
 ### Parameters
 

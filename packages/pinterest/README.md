@@ -4,7 +4,7 @@ Automatic tasks for Pinterest.
 
 ## login
 
-logs into Pinterest. You must be logged in to Google already.
+logs into Pinterest.
 
 ### Parameters
 
