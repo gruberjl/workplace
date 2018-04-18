@@ -1,5 +1,5 @@
-const {login} = require('./login')
-const {sendFriendRequests} = require('./friends-requests')
-const {postToGroup} = require('./post-to-group')
+const {login} = require('./lib/login')
+const {sendFriendRequests} = require('./lib/friends-requests')
+const {postToGroup} = require('./lib/post-to-group')
 
 module.exports = {login, sendFriendRequests, postToGroup}

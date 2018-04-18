@@ -1,4 +1,4 @@
-const {By} = require('selenium-webdriver')
+const {By} = require('../../driver').webdriver
 
 const postToGroup = async (driver, groupUrl, message) => {
   if (!driver) throw 'Facebook/post-to-group: Driver is required'

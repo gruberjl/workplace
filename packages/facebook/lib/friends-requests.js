@@ -1,6 +1,5 @@
-const url = 'https://www.facebook.com/friends/requests/' //'file:///C:/Users/john/Downloads/Facebook.html'
-const webdriver = require('selenium-webdriver')
-const {By, until, Key} = webdriver
+const url = 'https://www.facebook.com/friends/requests/'
+const {By, Key} = require('../../driver').webdriver
 
 const scrollToBottom = async (driver) => {
   const times = 10
