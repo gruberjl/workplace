@@ -1,4 +1,4 @@
-const {By} = require('selenium-webdriver')
+const {By} = require('../../driver').webdriver
 
 const postToGroup = async (driver, groupUrl, title, message) => {
   if (!driver) throw 'LinkedIn/post-to-group: Driver is required'

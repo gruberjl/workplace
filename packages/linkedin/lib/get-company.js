@@ -1,5 +1,4 @@
-const webdriver = require('selenium-webdriver')
-const {By} = webdriver
+const {By} = require('../../driver').webdriver
 
 const getCompanyFollowersCount = async (driver) => {
   var followersEl = await driver.findElement(By.className('org-top-card-module__followers-count'))

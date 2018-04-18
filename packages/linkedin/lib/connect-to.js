@@ -1,5 +1,4 @@
-const webdriver = require('selenium-webdriver')
-const {By} = webdriver
+const {By} = require('../../driver').webdriver
 
 const connectTo = async (driver, url) => {
   await driver.get(url)

@@ -1,6 +1,5 @@
 const url = 'https://www.linkedin.com/mynetwork/'
-const webdriver = require('selenium-webdriver')
-const {By, Key} = webdriver
+const {By, Key} = require('../../driver').webdriver
 
 const scrollDown = async (driver) => {
   const times = 10

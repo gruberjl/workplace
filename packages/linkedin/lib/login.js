@@ -1,6 +1,5 @@
 const Driver = require('../../driver')
-var webdriver = require('selenium-webdriver')
-const {By} = webdriver
+const {By} = Driver.webdriver
 const url = 'https://www.linkedin.com/'
 
 const login = async (email, password, driver) => {
