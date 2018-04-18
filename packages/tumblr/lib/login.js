@@ -1,6 +1,5 @@
-const Driver = require('driver')
-var webdriver = require('selenium-webdriver')
-const {By, until, Key} = webdriver
+const Driver = require('../../driver')
+const {By, Key} = Driver.webdriver
 const url = 'https://www.tumblr.com/login'
 
 const login = async (email, password, driver) => {
