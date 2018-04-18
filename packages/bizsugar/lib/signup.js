@@ -1,6 +1,5 @@
-var webdriver = require('selenium-webdriver')
-const {By} = webdriver
-const Driver = require('../driver')
+const Driver = require('../../driver')
+const {By} = Driver.webdriver
 
 const signup = async (username, password, email) => {
   const driver = await Driver.build()
