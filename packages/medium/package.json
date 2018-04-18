@@ -8,9 +8,5 @@
     "start": "node start.js"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "driver": "file:../driver",
-    "selenium-webdriver": "^4.0.0-alpha.1"
-  }
+  "license": "ISC"
 }

@@ -1,13 +1,11 @@
-const Driver = require('driver')
-var webdriver = require('selenium-webdriver')
-const {By, until, Key} = webdriver
+const {By, Key} = require('../../driver').webdriver
 
 const isBottomOfPage = async (driver) => {
-  return await driver.executeScript("if (document.body.scrollHeight == document.body.scrollTop + window.innerHeight) { return true; } else { return false; }")
+  return await driver.executeScript('if (document.body.scrollHeight == document.body.scrollTop + window.innerHeight) { return true; } else { return false; }')
 }
 
 const randomNum = (low, high) => {
-    return Math.floor(Math.random() * (high - low + 1) + low);
+  return Math.floor(Math.random() * (high - low + 1) + low)
 }
 
 const readUntilEnd = (driver, waitMin=1, waitMax=3) => new Promise(async (res) => {
@@ -26,7 +24,7 @@ const readUntilEnd = (driver, waitMin=1, waitMax=3) => new Promise(async (res) =
 const clap = async (driver, clapMin=1, clapMax=5) => {
   const times = randomNum(clapMin,clapMax)
   const clapBtn = await driver.findElement(By.css('.postActions .clapButton'))
-  await driver.executeScript("(document.getElementsByClassName('clapButton')[0]).scrollIntoView()")
+  await driver.executeScript('(document.getElementsByClassName(\'clapButton\')[0]).scrollIntoView()')
   const body = await driver.findElement(By.css('body'))
   await body.sendKeys(Key.ARROW_UP)
   await body.sendKeys(Key.ARROW_UP)
@@ -34,7 +32,7 @@ const clap = async (driver, clapMin=1, clapMax=5) => {
   await body.sendKeys(Key.ARROW_UP)
   await body.sendKeys(Key.ARROW_UP)
 
-  for (i = 0; i < times; i++) {
+  for (let i = 0; i < times; i++) {
     await driver.sleep(250)
     try {
       await clapBtn.click()
@@ -53,9 +51,7 @@ const readNextArticle = async (driver) => {
   await clap(driver, 1, 5)
 }
 
-const latestArticle = async (driver, user="@gruberjl") => {
-  if (!driver) driver = await Driver.build()
-
+const latestArticle = async (driver, user='@gruberjl') => {
   await driver.get(`http://medium.com/${user}/latest`)
   await driver.sleep(2000)
   await driver.findElement(By.css('a[data-action="open-post"]')).click()
