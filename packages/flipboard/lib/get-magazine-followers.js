@@ -1,5 +1,4 @@
-const webdriver = require('selenium-webdriver')
-const {By, Key} = webdriver
+const {By, Key} = require('../../driver').webdriver
 
 const getMagazine = async (driver, url, numOfPgDowns = 5) => {
   await driver.get(url)

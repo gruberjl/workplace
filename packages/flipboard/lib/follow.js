@@ -1,7 +1,6 @@
 /* eslint no-console: 0 */
 
-var webdriver = require('selenium-webdriver')
-const {By, Key} = webdriver
+const {By, Key} = require('../../driver').webdriver
 
 const follow = async (driver, urlToProfileToFollow, flipsToLike = 0) => {
   await driver.get(urlToProfileToFollow)
