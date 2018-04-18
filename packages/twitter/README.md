@@ -31,7 +31,10 @@ Using Twitter's API it will randomly select a tag (related to Office365) and fol
 
 ### Returns
 
-Nothing
+* Results: Object
+  * username: user thats performing the engaging
+  * hashtag: hashtag the person is engaging on
+  * tweetsCount: validTweets.length
 
 ## loyalist
 

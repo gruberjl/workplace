@@ -5,8 +5,6 @@ const listPost = async (sp, siteUrl, listTitle, item) => {
   const url = `${siteUrl}/_api/web/lists/GetByTitle('${listTitle}')/items`
   const listItemType = listTitle.replace(/-/g, '')
   const body = Object.assign({'__metadata': { 'type': `SP.Data.${listItemType}ListItem` }}, item)
-  console.log(listItemType)
-  console.log('')
   const results = await sp.post(url, {headers, body})
 
   return results

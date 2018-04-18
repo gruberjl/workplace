@@ -39,6 +39,7 @@ const commonPassword = require('./password').commonPassword
 const twitterAccount = require('./password').twitter
 const HUBSPOT = require('./password').HUBSPOT
 const LINKEDIN = require('./password').LINKEDIN
+const SharePoint = require('./password').SharePoint
 
 const csv = async () => new Promise((res) => {
   csvArray.parseCSV(PEOPLE_CSV, (data) => {
@@ -46,4 +47,4 @@ const csv = async () => new Promise((res) => {
   })
 })
 
-module.exports = {people, DB, db:DB, commonPassword, csv, twitterAccount, twitterApp, wikiCompanies, HUBSPOT, LINKEDIN, decisionMakerTitles}
+module.exports = {people, DB, db:DB, commonPassword, csv, twitterAccount, twitterApp, wikiCompanies, HUBSPOT, LINKEDIN, decisionMakerTitles, SharePoint}

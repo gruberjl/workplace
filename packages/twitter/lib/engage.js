@@ -60,17 +60,20 @@ const engage = async (user, hashtag) => {
   const tags = ['MicrosoftTeams', 'sharepoint', 'office2016', 'office365', 'exchangeonline', 'microsoftflow', 'onedrive', 'OfficeProPlus', 'SharePointOnline']
   if (!hashtag) hashtag = tags[Math.floor(Math.random()*tags.length)]
 
-  console.log(`${user.username} #${hashtag}`)
   var T = new Twit(user)
   const tweets = await getTweets(T, hashtag)
-  console.log(`Found ${tweets.length} tweets`)
 
   const validTweets = tweets.filter((tweet) => validateTweet(tweet, false))
-  console.log(`${validTweets.length} valid tweets`)
 
   for (const tweet of validTweets) {
     await favoriteTweet(T, tweet.id_str)
     await engageUser(T, tweet.user.screen_name)
+  }
+
+  return {
+    username: user.username,
+    hashtag,
+    tweetsCount: validTweets.length
   }
 }
 
