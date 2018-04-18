@@ -1,9 +1,9 @@
-const url = 'https://www.pinterest.com/microsoft/followers/'
-const webdriver = require('selenium-webdriver')
-const {By, Key} = webdriver
+const {By, Key} = require('../../driver').webdriver
 
-const follow = async (driver, followersToAdd = 100) => {
+const follow = async (driver, account = 'microsoft', followersToAdd = 100) => {
   if (!driver) throw 'pintrest/follow: Driver is required'
+
+  const url = `https://www.pinterest.com/${account}/followers/`
 
   await driver.get(url)
   await driver.sleep(5000)

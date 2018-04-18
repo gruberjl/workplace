@@ -1,6 +1,5 @@
-const Driver = require('driver')
-var webdriver = require('selenium-webdriver')
-const {By, Key} = webdriver
+const Driver = require('../../driver')
+const {By, Key} = Driver.webdriver
 const url = 'https://www.pinterest.com/login/?referrer=home_page'
 
 const login = async (email, password, driver) => {

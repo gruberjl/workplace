@@ -1,4 +1,4 @@
-const {login} = require('./login')
-const {follow} = require('./follow')
+const {login} = require('./lib/login')
+const {follow} = require('./lib/follow')
 
 module.exports = {login, follow}
