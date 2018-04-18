@@ -1,4 +1,5 @@
 const chrome = require('./chrome')
+const webdriver = require('selenium-webdriver')
 
 const build = async () => {
   const driver = await chrome.build()
@@ -6,4 +7,4 @@ const build = async () => {
   return driver
 }
 
-module.exports = {chrome, build}
+module.exports = {chrome, build, webdriver}
