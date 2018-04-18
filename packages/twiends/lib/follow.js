@@ -13,12 +13,10 @@ const follow = async (driver) => {
 
   const followButtons = await driver.findElements(By.className('mainbut'))
 
-  for (let i = 0; i < followButtons.length; i++) {
+  for (let i = 0; i < followButtons.length -1; i++) {
     await followButtons[i].click()
     await driver.sleep(500)
   }
-
-  await driver.sleep(10000)
 
   return driver
 }
