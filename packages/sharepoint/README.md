@@ -2,6 +2,15 @@
 
 Automatic tasks for SharePoint.
 
+**Expects a file called lib\people.js with the following content**
+```JavaScript
+module.exports = {
+  username: 'Username@gitbit.org',
+  password: ''
+}
+
+```
+
 ## login
 
 logs into SharePoint.
@@ -17,7 +26,7 @@ logs into SharePoint.
 
 ## listGet
 
-Follows people that are following another account
+Gets items from a SP list.
 
 ### Parameters
 
@@ -27,7 +36,7 @@ Follows people that are following another account
 
 ### Returns
 
-* sharepoint list: info in an object about the sharepoint list. (meta-data)
+* sharepoint list: info in an object about the SharePoint list. (meta-data)
 
 ## listPost
 
@@ -43,3 +52,11 @@ Create a new item in a sharepoint list.
 ### Returns
 
 * results from the request.
+
+## People.get
+
+Returns an array of all the items in the People list
+
+### Parameters
+
+* none
