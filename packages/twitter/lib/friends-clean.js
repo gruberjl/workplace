@@ -1,7 +1,7 @@
 const Twit = require('twit')
 
-const getFollowers = async (T, cursor = 1) => {
-  const followersResponse = await T.get('followers/ids')
+const getFriends = async (T, cursor = 1) => {
+  const followersResponse = await T.get('friends/ids', {count: 1000})
 
   const cursorPos = followersResponse.data.ids.length - (100 * cursor)
   const user_id = followersResponse.data.ids.slice(cursorPos, cursorPos + 100)
@@ -55,7 +55,7 @@ const authenticate = (user) => new Twit(user)
 
 const friendsClean = async (user) => {
   const T = await authenticate(user)
-  const users = await getFollowers(T)
+  const users = await getFriends(T)
   const usersToUnfollow = await filterUnfriend(T, users)
   await unfollow(T, usersToUnfollow)
 }
