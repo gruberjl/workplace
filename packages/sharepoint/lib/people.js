@@ -8,7 +8,7 @@ const listName = 'People'
 const get = async (filter = '') => {
   const sp = await login(user.username, user.password)
   filter ? filter = `$filter=${filter}` : null
-  const list = await listGet(sp, siteUrl, listName)
+  const list = await listGet(sp, siteUrl, listName, filter)
   return list
 }
 
