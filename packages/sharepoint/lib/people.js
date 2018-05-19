@@ -5,9 +5,10 @@ const {listGet} = require('./list-get')
 const siteUrl = 'https://gitbit.sharepoint.com/sites/Marketing'
 const listName = 'People'
 
-const get = async () => {
+const get = async (filter = '') => {
   const sp = await login(user.username, user.password)
-  const list = await listGet(sp, siteUrl, listName, 'items')
+  filter ? filter = `$filter=${filter}` : null
+  const list = await listGet(sp, siteUrl, listName)
   return list
 }
 

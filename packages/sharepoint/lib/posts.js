@@ -8,7 +8,7 @@ const listName = 'posts'
 
 const get = async (title) => {
   const sp = await login(user.username, user.password)
-  const list = await listGet(sp, siteUrl, listName, 'items')
+  const list = await listGet(sp, siteUrl, listName)
   const apps = list
 
   if (title) {

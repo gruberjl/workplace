@@ -1,6 +1,5 @@
 const listGet = async (sp, siteUrl, listName, affix, raw) => {
-  affix ? affix = `/${affix}` : affix = ''
-  const response = await sp.get(`${siteUrl}/_api/web/lists/GetByTitle('${listName}')${affix}`)
+  const response = await sp.get(`${siteUrl}/_api/web/lists/GetByTitle('${listName}')/items?${affix}`)
 
   if (!raw) {
     response.body.d.results.forEach((result) => {

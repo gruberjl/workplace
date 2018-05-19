@@ -7,7 +7,7 @@ const listName = 'keywords'
 
 const get = async () => {
   const sp = await login(user.username, user.password)
-  const list = await listGet(sp, siteUrl, listName, 'items')
+  const list = await listGet(sp, siteUrl, listName)
   return list
 }
 
