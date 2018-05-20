@@ -6,13 +6,13 @@ const start = async () => {
   const people = await People.get()
   const redditers = people.filter((person) => person.reddit)
   const submitter = redditers[Math.floor(Math.random() * redditers.length)]
-  console.log(`${submitter.reddit} is browsing Reddit`)
+  process.send(`${submitter.reddit} is browsing Reddit`)
   const r = await login(submitter.reddit, commonPassword)
-  console.log('   Logged in')
+  process.send('Logged in')
   await browseSubreddit(r)
-  console.log('   Finished browsing subreddits')
+  process.send('Finished browsing subreddits')
   await upvoteFriends(r, submitter.reddit)
-  console.log('   Finished upvoting friends')
+  process.send('Finished upvoting friends')
 }
 
 start()

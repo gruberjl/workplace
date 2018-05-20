@@ -68,14 +68,14 @@ const start = async () => {
       const res = await T.post('friendships/destroy', {user_id: usr.id_str})
       previousCode = res.resp.statusCode
       if (res.resp.statusCode != 200) {
-        console.log(`Error unfriending: ${res.resp.statusMessage}`)
+        process.send(`Error unfriending: ${res.resp.statusMessage}`)
       } else {
         unfriendCount++
       }
     }
   }
 
-  console.log(`Unfriended: ${unfriendCount}`)
+  process.send(`Unfriended: ${unfriendCount}`)
 }
 
 start()
