@@ -25,6 +25,14 @@ const get = async (affix='') => {
 const post = async (items) => {
   const sp = await login(user.username, user.password)
 
+  items.forEach((itm) => {
+    itm.postafter ? null : itm.postafter = new Date()
+    typeof itm.postafter == 'string' ? null : itm.postafter = itm.postafter.toISOString()
+    if (itm.summary)
+      itm.summary = itm.summary.split('\n').join('&#xD;&#xA;')
+    typeof itm.url == 'string' ? itm.url = {Url:itm.url} : null
+  })
+
   const results = []
   for (let i = 0; i < items.length; i++) {
     results.push(await listPost(sp, siteUrl, 'Posts', items[i]))

@@ -5,5 +5,6 @@ const People = require('./lib/people')
 const Apps = require('./lib/apps')
 const Keywords = require('./lib/keywords')
 const Posts = require('./lib/posts')
+const Groups = require('./lib/groups')
 
-module.exports = {login, listPost, listGet, People, Apps, Keywords, Posts}
+module.exports = {login, listPost, listGet, People, Apps, Keywords, Posts, Groups}
