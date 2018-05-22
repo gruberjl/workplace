@@ -48,6 +48,27 @@ const startTwitterUnfriend = () => {
   redditSubmit.on('message', onMessage(debug))
   redditSubmit.on('close', onClose(debug))
 }
+const startTwitterEngage = () => {
+  setTimeout(() => {
+    const debug = require('debug')('twitter-engage')
+    debug('Starting twitter-engage')
+    const redditSubmit = fork(resolve('friends-engage'))
+
+    redditSubmit.on('message', onMessage(debug))
+    redditSubmit.on('close', onClose(debug))
+  }, Math.floor(Math.random()*1800000))
+}
+
+const startLinkedInPostToGroup = () => {
+  setTimeout(() => {
+    const debug = require('debug')('linkedin-group-post')
+    debug('Starting linkedin-group-post')
+    const linkedInPostToGroup = fork(resolve('linkedin-group-post'))
+
+    linkedInPostToGroup.on('message', onMessage(debug))
+    linkedInPostToGroup.on('close', onClose(debug))
+  }, Math.floor(Math.random()*1800000))
+}
 
 const start = () => {
   const twitterRule = new schedule.RecurrenceRule()
@@ -67,6 +88,10 @@ const start = () => {
   schedule.scheduleJob(redditSubmitRule, startRedditSubmit)
 
   schedule.scheduleJob('30 8 * * *', startTwitterUnfriend)
+
+  schedule.scheduleJob('35 3 * * *', startTwitterEngage)
+
+  schedule.scheduleJob('0 7 * * 1,2,3,4', startLinkedInPostToGroup)
 }
 
 start()

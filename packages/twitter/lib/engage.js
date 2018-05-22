@@ -1,23 +1,18 @@
 const Twit = require('twit')
 const friends = []
+const {Apps} = require('../../sharepoint')
 
-const getTweets = async (T, hashtag, count = 100) => new Promise((res, rej) => {
-  T.get('search/tweets', { q: `#${hashtag} lang:en`, count }, function(err, data) {
-    if (err)
-      rej(err)
-    else {
-      const tweets = data.statuses.filter((twit) => {
-        return (
-          twit.possibly_sensitive == false &&
-          twit.lang == 'en' &&
-          twit.user.lang == 'en'
-        )
-      })
+const getTweets = async (T, hashtag, count = 100) => {
+  const res = await T.get('search/tweets', { q: `#${hashtag} lang:en`, count })
 
-      res(tweets)
-    }
-  })
-})
+  const tweets = res.data.statuses.filter((twit) => (
+    twit.possibly_sensitive == false &&
+    twit.lang == 'en' &&
+    twit.user.lang == 'en'
+  ))
+
+  return tweets
+}
 
 const validateTweet = (tweet, favorited) => (
   tweet.possibly_sensitive != true &&
@@ -26,54 +21,43 @@ const validateTweet = (tweet, favorited) => (
   (typeof favorited === 'undefined' ? true : favorited === tweet.favorited)
 )
 
-const follow = async (T, screen_name) => new Promise((res, rej) => {
-  T.post('friendships/create', { screen_name }, (err, data) => {
-    if (err && err.code != 158) {
-      rej(err)
-    } else {
-      res(data)
-    }
-  })
-})
+const follow = async (T, screen_name) => {
+  await T.post('friendships/create', { screen_name })
+}
 
-const engageUser = async (T, screen_name) => new Promise(async (res) => {
-  if (friends.includes(screen_name))
-    return res()
+const engageUser = async (T, screen_name) => {
+  if (!friends.includes(screen_name)) {
+    await follow(T, screen_name)
+    friends.push(screen_name)
+  }
+}
 
-  await follow(T, screen_name)
-
-  friends.push(screen_name)
-  res()
-})
-
-const favoriteTweet = async (T, ID) => new Promise((res, rej) => {
+const favoriteTweet = async (T, ID) => {
   const id = String(ID)
-  T.post('favorites/create', { id }, (err, data) => {
-    if (err && err.code != 139)
-      rej(err)
+  await T.post('favorites/create', { id })
+}
 
-    res(data)
+const engage = async (access_token, access_token_secret, username='') => {
+  const app = await Apps.get('twitter')
+  const tags = ['MicrosoftTeams', 'sharepoint', 'office2016', 'office365', 'exchangeonline', 'microsoftflow', 'onedrive', 'OfficeProPlus', 'SharePointOnline', 'MicrosoftPlanner']
+  const hashtag = tags[Math.floor(Math.random()*tags.length)]
+
+  var T = new Twit({
+    consumer_key:app.client_id,
+    consumer_secret:app.client_secret,
+    access_token,
+    access_token_secret
   })
-})
-
-const engage = async (user, hashtag) => {
-  const tags = ['MicrosoftTeams', 'sharepoint', 'office2016', 'office365', 'exchangeonline', 'microsoftflow', 'onedrive', 'OfficeProPlus', 'SharePointOnline']
-  if (!hashtag) hashtag = tags[Math.floor(Math.random()*tags.length)]
-
-  var T = new Twit(user)
   const tweets = await getTweets(T, hashtag)
 
   const validTweets = tweets.filter((tweet) => validateTweet(tweet, false))
 
   for (const tweet of validTweets) {
-    await favoriteTweet(T, tweet.id_str)
-    await engageUser(T, tweet.user.screen_name)
-  }
-
-  return {
-    username: user.username,
-    hashtag,
-    tweetsCount: validTweets.length
+    if (Math.floor(Math.random()*3) == 0) {
+      process.send(`${username} is liking tweet from @${tweet.user.screen_name}: "${tweet.text}"`)
+      await favoriteTweet(T, tweet.id_str)
+      await engageUser(T, tweet.user.screen_name)
+    }
   }
 }
 
